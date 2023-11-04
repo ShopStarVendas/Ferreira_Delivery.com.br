@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notificações</title>
+</head>
+<body>
+    <h1>Bem-vindo</h1>
+    <p>Boas compras</p>
+
+    <script>
+        // Função para mostrar uma notificação
+        function showNotification() {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === 'granted') {
+                        new Notification('Notificação', { body: 'Bem-vindo! Boas compras!' });
+                    }
+                });
+            }
+        }
+
+        // Chamada da função para mostrar a notificação quando a página for carregada
+        window.addEventListener('load', showNotification);
+    </script>
+</body>
+</html>

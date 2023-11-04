@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=0, user-scalable=no">
+    
+  <link rel="stylesheet" href="menu.css">
+    <title>cardápio</title>
+    <style>
+        /* Exemplo de media query para dispositivos móveis */
+##@media (max-width: 768px) {
+    /* Defina seu estilo para dispositivos móveis aqui */
+}
+##img {
+    max-width: 100%;
+    height: auto;
+}
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    .menu_card {
+        width: 100%;
+        margin: 0 0 20px;
+    }
+
+    .menu_info {
+        padding: 10px;
+    }
+
+    .menu_btn {
+        padding: 10px 20px;
+    }
+
+    .gallary_image {
+        margin: 0 0 20px;
+    }
+
+    .gallary_btn {
+        padding: 10px 20px;
+    }
+}
+
+/* Estilos do menu e galeria */
+.menu {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.menu h1, .gallary h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.menu_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.menu_card, .gallary_image {
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 10px 20px;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.menu_card:hover, .gallary_image:hover {
+    transform: scale(1.05);
+}
+
+.menu_image img, .gallary_image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0 0;
+}
+
+.small_card {
+    background-color: #e2445c;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.menu_info, .gallary_image {
+    padding: 20px;
+    text-align: left;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+
+p {
+    font-size: 16px;
+    margin: 0 0 15px;
+    color: #666;
+}
+
+h3 {
+    font-size: 20px;
+    color: #e2445c;
+    margin: 0;
+}
+
+.menu_icon {
+    margin: 10px 0;
+}
+
+.menu_btn, .gallary_btn {
+    background-color: #e2445c;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.menu_btn:hover, .gallary_btn:hover {
+    background-color: #d13249;
+}
+
+/* Estilos gerais para a seção de galeria */
+.gallary {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.gallary h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.gallary_image_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gallary_image {
+    width: 300px; /* Defina a largura desejada */
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 10px 20px;
+    border-radius: 5px;
+    text-align: left; /* Alinhe o texto à esquerda */
+}
+
+.gallary_image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0 0;
+}
+
+.gallary_image h3 {
+    font-size: 24px;
+    margin: 10px;
+}
+
+.gallary_image p {
+    font-size: 16px;
+    color: #666;
+    padding: 0 10px; /* Adicione um espaçamento interno */
+}
+
+.gallary_btn {
+    background-color: #e2445c;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.gallary_btn:hover {
+    background-color: #d13249;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="menu" id="Menu">
+        <h1>Produtos <span></span>Disponíveis</h1>
+
+        <div class="menu_box">
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="produtos/qualy.png">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Margarina Qualy 250g</h2>
+                    <p>olha só o precinho, margarina Qualy 250g
+                    </p>
+                    <h3>$4.90</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="index.html" class="menu_btn">obter</a>
+                </div>
+
+            </div> 
+            
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="produtos/tomate.png">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>molho fugini</h2>
+                    <p>     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda
+                    </p>
+                    <h3>$2.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="index.html" class="menu_btn">Obter Agora</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="produtos/Doce.png">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Açúcar</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda
+                    </p>
+                    <h3>$00.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="index.html" class="menu_btn">Obter agora</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="produtos/feijao.png">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>feijão camil 1kg</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="index.html" class="menu_btn">Obter agora</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/pizza.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>pizza</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/Hot_dog.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Hot Dog</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/juse.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Juse</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/biryani.webp">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Biryani</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/chocolate.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Chocolate</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/ice_cream.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Ice Cream</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/Spanchi.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Spanchi</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/sandwich.jpg">
+                </div>
+
+                <div class="small_card">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Sandwich</h2>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum assumenda voluptates
+                    </p>
+                    <h3>$20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#" class="menu_btn">Order Now</a>
+                </div>
+
+            </div> 
+            
+        </div>
+
+    </div>
+
+
+
+
+    <!--Gallary-->
+
+    <div class="gallary" id="Gallary">
+        <h1>Ferreira<span></span>Delivery</h1>
+
+        <div class="gallary_image_box">
+            <div class="gallary_image">
+                <img src="produtos/coca.png">
+
+                <h3>Coca-cola lata 350g</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+                <a href="index.html" class="gallary_btn">Obter agora</a>
+            </div>
+
+            <div class="gallary_image">
+                <img src="produtos/fanta.png">
+
+                <h3>fanta laranja 350g</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+                <a href="index.html" class="gallary_btn">Obter agora</a>
+            </div>
+
+            <div class="gallary_image">
+                <img src="produtos/hi.png">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+                <a href="#" class="gallary_btn">Order Now</a>
+            </div>
+
+            <div class="gallary_image">
+                <img src="image/gallary_4.jpg">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+                <a href="#" class="gallary_btn">Order Now</a>
+            </div>
+
+            <div class="gallary_image">
+                <img src="image/gallary_5.jpg">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+                <a href="#" class="gallary_btn">Order Now</a>
+            </div>
+
+            <div class="gallary_image">
+                <img src="image/gallary_6.jpg">
+
+                <h3>Food</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sint eveniet laboriosam 
+                </p>
+                <a href="#" class="gallary_btn">Order Now</a>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        // Função para alternar automaticamente entre os produtos
+        function startProductCarousel() {
+            let currentIndex = 0;
+            const products = document.querySelectorAll('.menu_card');
+
+            setInterval(() => {
+                products[currentIndex].style.display = 'none';
+                currentIndex = (currentIndex + 1) % products.length;
+                products[currentIndex].style.display = 'block';
+            }, 2000); // Alterne a cada 2 segundos (2000 milissegundos)
+        }
+
+        // Inicie o carrossel quando a página for carregada
+        window.addEventListener('load', startProductCarousel);
+    </script>
+</body>
+</html>

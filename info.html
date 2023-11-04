@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coletar Informações do Cliente</title>
+</head>
+<body>
+    <h1>Informações do Pedido</h1>
+    <form id="info-form">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" required>
+
+        <label for="numero">Número:</label>
+        <input type="text" id "numero" required>
+
+        <label for="complemento">Complemento:</label>
+        <input type="text" id="complemento">
+
+        <label for="forma-pagamento">Forma de Pagamento:</label>
+        <select id="forma-pagamento" required>
+            <option value="debito">Débito</option>
+            <option value="credito">Crédito</option>
+            <option value="pix">PIX</option>
+            <option value="dinheiro">Dinheiro</option>
+        </select>
+
+        <label for="troco">Troco (caso escolha dinheiro):</label>
+        <input type="text" id="troco">
+
+        <button type="button" id="finalizar-compra-button">Finalizar Compra</button>
+    </form>
+
+    <script>
+        document.getElementById('finalizar-compra-button').addEventListener('click', () => {
+  const produtosNoCarrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  if (produtosNoCarrinho.length === 0) {
+    alert('Seu carrinho está vazio. Adicione produtos antes de finalizar o pedido.');
+    return; // Sair da função se o carrinho estiver vazio
+  }
+
+  // Coletar informações do pedido usando prompts
+  const endereco = prompt('Por favor, insira o endereço de entrega:');
+  const numero = prompt('Por favor, insira o número:');
+  const complemento = prompt('Por favor, insira o complemento (opcional):');
+  const formaPagamento = prompt('Por favor, insira a forma de pagamento (debito, credito, pix, dinheiro):');
+
+  if (formaPagamento === 'dinheiro') {
+    const troco = prompt('Por favor, insira o valor para o troco:');
+    // Concatenar os produtos do carrinho na mensagem
+    const produtosMensagem = produtosNoCarrinho.map((produto, index) => {
+      return `${index + 1}. ${produto.nome} - R$ ${produto.preco.toFixed(2)}`;
+    }).join('\n');
+
+    let mensagem = 'Finalizar Pedido - Meus Produtos:\n' + produtosMensagem;
+    mensagem += '\nInformações do Pedido:\n';
+    mensagem += `Endereço: ${endereco}\nNúmero: ${numero}\nComplemento: ${complemento}\n`;
+    mensagem += `Forma de Pagamento: ${formaPagamento}\n`;
+    mensagem += `Troco: ${troco}\n`;
+
+    // Redirecionar para o WhatsApp (substitua com o link correto)
+    const numeroWhatsApp = '+5519999015294';
+    window.location.href = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+
+    // Limpar o carrinho
+    localStorage.removeItem('carrinho');
+    exibirProdutosNoCarrinho(); // Atualizar a exibição do carrinho
+  } else {
+    // Tratar outras formas de pagamento aqui
+  }
+});
+
+    </script>
+</body>
+</html>

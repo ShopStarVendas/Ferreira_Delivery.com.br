@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+      /* Seu CSS aqui */
+    /* ... (seu estilo CSS aqui) ... */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff; /* Fundo branco */
+      color: black; /* Texto preto */
+    }
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #f7f7f7;
+      max-width: 100px;
+      text-align: center;
+    }
+    .product-image {
+      max-width: 100%; /* Imagem preenchendo a largura */
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    /* Estilos para o botão do carrinho */
+.cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cart-button img {
+  width: 100%;
+  height: auto;
+}
+
+/* Estilos para o modal do carrinho */
+.cart-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 60%;
+  max-width: 300px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.cart-modal-content {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cart-close {
+  text-align: right;
+}
+
+/* Estilos para a lista de produtos no carrinho */
+.cart-product {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cart-product img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+/* Estilos para o botão de fechar o modal */
+.cart-close-button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+    .product-title {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .product-description {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .product-price {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .details-link,
+    .contact-button {
+      color: #007bff;
+      text-decoration: none;
+      margin-top: 10px;
+      display: block;
+      font-size: 18px;
+    }
+    /* Estilo para a janela modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      max-width: 80%; /* Largura da janela modal */
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .modal-image {
+      max-width: 100%; /* Imagem preenchendo a largura */
+      height: auto;
+      border-radius: 10px;
+    }
+    .back-button {
+      background-color: #ccc;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .whatsapp-bar {
+      background-color: #3bff00;
+      padding: 5px;
+      border-radius: 5px;
+      color: #fff;
+      text-align: center;
+    }
+    .footer {
+      background-color: #fff;
+      padding: 20px;
+    }
+    .product-button {
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    /* Estilos para o botão do carrinho */
+.cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cart-button img {
+  width: 100%;
+  height: auto;
+}
+<!-- finalizar pedido-->
+.cart-modal-content {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+#cart-products {
+  max-height: 300px; /* Ajuste a altura máxima desejada */
+  overflow-y: auto;
+}
+
+finalizar-pedido-button {
+  background-color: #4CAF50; /* Verde */
+  color: #fff;
+  border: none;
+  border-radius: 20px; /* Deixa as bordas redondas */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+<!-- ajuste das imagem dos produtos-->
+.details-image {
+  max-width: 150%;
+  height: auto;
+  max-height: 300px; /* Ajuste o tamanho conforme necessário */
+}
+
+.back-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  width: 100px; /* Largura do botão de volta */
+  text-align: center;
+  margin: 10px auto; /* Centralizar o botão horizontalmente */
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+  max-width: 150px; /* Ajuste a largura conforme necessário */
+# max-height: 800px; /* Ajuste a altura conforme necessário */
+  text-align: center;
+}
+
+/* Outros estilos permanecem os mesmos */
+
+.product-details {
+  max-width: 6000px; /* Define a largura máxima para o card */
+  margin: 0 auto; /* Centraliza o card */
+  padding: 10px;
+}
+/* Estilos para a imagem dentro do modal */
+.modal-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Outros estilos, como botões, carrinho, etc. */
+/* ... */
+
+/* Ajuste do card do produto */
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+  max-width: 300px;
+  text-align: center;
+}
+
+/* Ajuste dos produtos no carrinho */
+.cart-product img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+/* Ajuste do botão Voltar */
+.back-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  width: 100px;
+  text-align: center;
+  margin: 10px auto;
+}
+
+/* Ajuste do botão Finalizar Pedido */
+.finalizar-pedido-button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+<!-- produtos pagina incial tudo-->
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #f7f7f7;
+      max-width: 300px;
+      text-align: center;
+    }
+    .product-image {
+      max-width: 100%; /* Imagem preenchendo a largura */
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .product-title {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .product-description {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .product-price {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .details-link,
+    .contact-button {
+      color: #007bff;
+      text-decoration: none;
+      margin-top: 10px;
+      display: block;
+      font-size: 20px;
+      background-color: #26ff0068;
+      border-radius: 0px;
+      font-size: 20px;
+  font-size: 18px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  background: linear-gradient(45deg, #00ff00, #00cc00);
+  color: #fff;
+  box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+  background: linear-gradient(45deg, #9900cc, #660099);
+  color: #fff;
+  box-shadow: 0 0 10px #9900cc, 0 0 20px #9900cc, 0 0 30px #9900cc;
+  background: linear-gradient(45deg, #ff0099, #ff0066);
+  color: #fff;
+  box-shadow: 0 0 10px #ff0099, 0 0 20px #ff0099, 0 0 30px #ff0099;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+
+    }
+    /* Estilo para a janela modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      max-width: 50%; /* Largura da janela modal */
+      margin: 0px auto;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .modal-image {
+      max-width: 100%; /* Imagem preenchendo a largura */
+      height: auto;
+      border-radius: 1000px;
+    }
+    .back-button {
+      background-color: #ccc;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .whatsapp-bar {
+      background-color: #3bff00;
+      padding: 5px;
+      border-radius: 5px;
+      color: #fff;
+      text-align: center;
+    }
+    .footer {
+      background-color: #fff;
+      padding: 20px;
+    }
+    .product-button {
+      background-color: #000;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    <!-- lupa -->
+   .search-icon {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.circle {
+    width: 50px; /* Tamanho da bolinha */
+    height: 50px; /* Tamanho da bolinha */
+    background-color: #000; /* Cor de fundo da bolinha */
+    border-radius: 50%; /* Forma circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lupa-icon {
+    width: 30px; /* Largura da imagem da lupa */
+    height: 30px; /* Altura da imagem da lupa */
+    cursor: pointer;
+}
+
+.search-form {
+    margin: 10px; /* Margem para posicionamento */
+    text-align: center; /* Centraliza o formulário */
+}
+
+#search-input {
+    padding: 10px; /* Espaçamento interno para entrada de texto */
+    width: 250px; /* Largura do campo de pesquisa */
+    border: 2px solid #333; /* Borda ao redor do campo de pesquisa */
+    border-radius: 5px; /* Cantos arredondados */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+#search-input::placeholder {
+    color: #999; /* Cor do texto de espaço reservado (placeholder) */
+}
+
+#search-input:focus {
+    border-color: #007bff; /* Cor da borda ao focar no campo */
+    outline: none; /* Remove a borda ao redor do campo ao focar */
+}
+<!-- button remover carrinhos de compras-->
+  /* CSS */
+.btn-remove-neon {
+  background-color: #ff6cc2; /* Cor de fundo rosa */
+  color: #ffffff; /* Cor do texto branca */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px; /* Bordas arredondadas */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Efeito de transição de cor e sombreamento */
+  box-shadow: 0 4px 6px rgba(255, 108, 194, 0.4); /* Sombreamento padrão */
+}
+
+.btn-remove-neon:hover {
+  background-color: #ff43a4; /* Cor de fundo rosa mais intensa no hover */
+  box-shadow: 0 6px 8px rgba(255, 67, 164, 0.6); /* Sombreamento no hover */
+}
+<!-- notificação -->
+/* Estilos para o botão neon */
+.notification {
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, #e91e63, #9c27b0, #2196f3, #ffffff, #4caf50);
+  background-size: 400% 400%;
+  animation: gradient 5s linear infinite;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.notification:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+<!-- notificação -->
+
+
+</style>
+</head>
+<body>
+    <!-- vookies -->
+       <!-- notificação -->
+    
+
+<!-- notificação -->
+    
+    <!-- cookies -->
+    <!-- pesquisa -->
+<div class="search-bar">
+    <input type="text" id="search-input" placeholder="Pesquisar produtos" oninput="searchProducts()">
+</div>
+<div class="products-container">
+    <!-- Seus produtos aqui, cada produto deve ter uma classe "product" -->
+</div>
+
+    <!-- pesquisa -->
+    <!-- roda pe -->
+ 
+       <!-- roda pe -->
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/leite.png" alt="site" class="product-image details-image">
+            <h2 class="product-title">Leite Integral Italac 1Lt</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/leite.png', 'leite integral italac 1Lt, Ferreira Delivery')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="Leite integral italac 1Lt" data-preco="10.00" data-imagem="pro/leite.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5519999015294&text=Olá Leite integral nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/camil.png" alt="feijão carioca camil 1kg" class="product-image details-image">
+            <h2 class="product-title">Feijão carioca Camil 1kg</h2>
+            <p class="product-price">R$ 15.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/camil.png', 'Feijão carioca Camil 1kg, Ferreira Delivery ')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button " data-nome="feijão carioca camil 1Kg" data-preco="15.00" data-imagem="pro/camil.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5519999015294&text=ops... feijão carioca Camil 1kg não foi adicionado no carrinho " class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/cala.png" alt="Calabresa marba torta 400g" class="product-image details-image">
+            <h2 class="product-title">Calabresa Marba Torta 400g</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/cala.png', 'Calabresa marba torta 400g, Ferreira Delivery ')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="Calabresa marba torta 440g" data-preco="10.00" data-imagem="pro/cala.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5519999015294&text=Ops... Calabresa marba torta 400g não foi acionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/doce.png" alt=""açúcar refinado caravelas 1kg class="product-image details-image">
+            <h2 class="product-title">Açúcar Refinado Caravelas 1Kg</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/doce.png', 'açucar refinado caravelas 1Kg, Ferreira Delivery')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="açúcar refinado caravelas 1kg" data-preco="10.00" data-imagem="pro/doce.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5519999015294&text=Ops... Açúcar Refinado caravelas 1Kg, não foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/molho.png" alt="Molho Fugini 300g" class="product-image details-image">
+            <h2 class="product-title">Molho Fugini 300g</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/molho.png', 'Molho Fugini 300g')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="molho fugini 300g" data-preco="10.00" data-imagem="pro/molho.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Molho Fugini 300g nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/leve.png" alt="Óleo De Soja Leve 900ML" class="product-image details-image">
+            <h2 class="product-title">Óleo De Soja Leve 900ML</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/leve.png', 'Óleo De Soja Leve 900ML')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="Óleo de soja leve 900Ml" data-preco="10.00" data-imagem="pro/leve.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Óleo De soja Leve 900ml nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/qualy.png" alt="Margarina Qualy 250g" class="product-image details-image">
+            <h2 class="product-title">Margarina Qualy 250g</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/qualy.png', 'Margarina Qualy 250g, Ferreira Delivery')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="margarina Qualy 250g" data-preco="10.00" data-imagem="pro/qualy.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Margarina Qualy 250g nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/sal.png" alt="sal refinado gaurani 1kg" class="product-image details-image">
+            <h2 class="product-title">Sal Refinado Gaurani 1Kg</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/sal.png', 'sal refinado gaurani 1Kg')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="sal refinado gaurani 1kg" data-preco="10.00" data-imagem="pro/sal.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Sal refinado Gaurani 1kg nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/italac.png" alt="Leite condensado Italac 395g" class="product-image details-image">
+            <h2 class="product-title">Leite condensado Italac 395g</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/italac.png', 'leite condensado italac 395g')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="leite condensado italac 395g" data-preco="10.00" data-imagem="pro/italac.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Leite condensado Itakac 395g nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/coca.png" alt="coca cola lata 350ML" class="product-image details-image">
+            <h2 class="product-title">Coca cola lata 350ML</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/coca.png', 'coca cola lata 350ML')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="coca cola lata 350g" data-preco="10.00" data-imagem="pro/coca.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Coca cola lata 350g nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/uva.png" alt="fanta uva lata 350ML" class="product-image details-image">
+            <h2 class="product-title">Fanta Uva Lata 350ML</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/uva.png', 'fanta uva lata 350Ml')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="fanta uva lata 350ML" data-preco="10.00" data-imagem="pro/uva.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Fanta uva lata 350ML nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/lara.png" alt="Fanta laranja lata 350ML" class="product-image details-image">
+            <h2 class="product-title">Fanta Laranja Lata 350ML</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/lara.png', 'Fanta laranja lata 350ML')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="fanta laranja lata 350ML" data-preco="10.00" data-imagem="pro/lara.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Fanta Laranja lata 350ML nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/hi.png" alt="Heineken long Neck 330ML" class="product-image details-image">
+            <h2 class="product-title">Heineken Long Neck 330ML</h2>
+            <p class="product-price">R$ 10.00</p>
+            <a href="#" class="details-link" onclick="openModal('pro/hi.png', 'Heineken Long Neck 330Ml')">Ver Detalhes</a>
+            <button class="add-to-cart-button neon-button" data-nome="Heineken Long Neck 330ML" data-preco="10.00" data-imagem="pro/hi.png">Adicionar ao Carrinho</button>
+            <a href="https://api.whatsapp.com/send?phone=+5511911454585&text=Ops... Heineken Long Neck 330ML nao foi adicionado no carrinho!" class="contact-button">Fale Conosco no WhatsApp</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<div class="products-container">
+    <div class="product">
+        <div class="product-details">
+            <img src="pro/uai.png" alt="pedido" class="product-image details-image">
+            <h2 class="product-title">Faça seu pedido pelo uairango!</h2>
+            <p class="product-price"> uairango</p>
+            <a href="#" class="details-link" onclick="openModal('pro/molho.png', 'Molho Fugini 300g')">Ver Detalhes</a>
+            <button class="add-to-cart-button" data-nome="molho fugini 300g" data-preco="00.00" data-imagem="pro/uai.png"></button>
+            <a href="https://linktr.ee/ferreiradelivery10" class="contact-button">Ir para o uairango</a>
+            <button class="back-button" onclick="closeModal()">Voltar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Janela modal -->
+<div class="modal" id="modal">
+    <div class="modal-content" id="modal-content">
+        <!-- O conteúdo da janela modal será carregado aqui -->
+    </div>
+</div>
+
+
+<!-- Botão para abrir o carrinho -->
+<button id="show-cart-button" class="cart-button">
+    <img src="carrinho.png" alt="Carrinho">
+</button>
+
+<!-- Modal do carrinho -->
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-modal-content">
+        <button id="cart-close-button" class="cart-close-button">Fechar</button>
+        <h3>Produtos no Carrinho</h3>
+        <div id="cart-products"></div>
+        <button id="finalizar-pedido-button" class="finalizar-pedido-button">Finalizar Pedido</button>
+    </div>
+</div>
+
+<!-- menu<!--  -->
+        <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+</div>
+
+    </header>
+    
+<script>
+// Array para armazenar os produtos no carrinho
+    const carrinho = [];
+
+    // Função para abrir o modal do carrinho
+    document.getElementById('show-cart-button').addEventListener('click', () => {
+      document.getElementById('cart-modal').style.display = 'block';
+      exibirProdutosNoCarrinho();
+    });
+
+    // Função para fechar o modal do carrinho
+    document.getElementById('cart-close-button').addEventListener('click', () => {
+      document.getElementById('cart-modal').style.display = 'none';
+    });
+
+    // Adicione um evento de clique //
+function reproduzirAudio() {
+  const audio = new Audio('o.mp3'); // Substitua 'seuarquivo.mp3' pelo caminho para o seu arquivo de áudio
+  audio.preload = 'auto';
+  audio.play();
+}
+
+const botoesAdicionar = document.querySelectorAll('.add-to-cart-button');
+botoesAdicionar.forEach((botao) => {
+  botao.addEventListener('click', function() {
+    const nome = this.getAttribute('data-nome');
+    const preco = parseFloat(this.getAttribute('data-preco'));
+    const imagem = this.getAttribute('data-imagem');
+
+    // Cria um objeto representando o produto
+    const produto = {
+      nome: nome,
+      preco: preco,
+      imagem: imagem
+    };
+
+    // Adiciona o produto à lista de produtos no carrinho
+    carrinho.push(produto);
+
+    // Atualiza o localStorage com a lista de produtos no carrinho
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+    // Exibe os produtos no carrinho
+    exibirProdutosNoCarrinho();
+
+    // Exibe a mensagem de confirmação
+    
+
+    // Reproduz o áudio de confirmação
+    reproduzirAudio();
+  });
+});
+
+    
+    // Função para exibir os produtos no carrinho
+    function exibirProdutosNoCarrinho() {
+      const cartModalContent = document.getElementById('cart-products');
+
+      // Obtém a lista de produtos no carrinho do localStorage
+      const produtosNoCarrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+      if (produtosNoCarrinho.length === 0) {
+        cartModalContent.innerHTML = '<p>Carrinho vazio.</p>';
+      } else {
+        cartModalContent.innerHTML = '';
+        let valorTotal = 0;  // Variável para armazenar o valor total
+
+        produtosNoCarrinho.forEach((item, index) => {
+          const productDiv = document.createElement('div');
+          productDiv.classList.add('cart-product');
+
+          productDiv.innerHTML = `
+            <img src="${item.imagem}" alt="${item.nome}">
+            <span>${item.nome} - R$ ${item.preco.toFixed(2)}</span>
+          `;
+
+          // Adicionar botão de remoção
+          const removeButton = document.createElement('button');
+          removeButton.textContent = 'Remover';
+          removeButton.addEventListener('click', () => {
+            removerProduto(index);
+          });
+
+          productDiv.appendChild(removeButton);
+          cartModalContent.appendChild(productDiv);
+
+          // Atualizar o valor total
+          valorTotal += item.preco;
+        });
+
+        // Exibe o valor total no carrinho
+        const totalDiv = document.createElement('div');
+        totalDiv.classList.add('cart-total');
+        totalDiv.textContent = `Total: R$ ${valorTotal.toFixed(2)}`;
+        cartModalContent.appendChild(totalDiv);
+      }
+    }
+
+    // Função para remover produtos do carrinho
+    function removerProduto(index) {
+      // Remove o produto do carrinho
+      carrinho.splice(index, 1);
+
+      // Atualiza o localStorage com a lista de produtos no carrinho
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+      // Atualiza a exibição do carrinho
+      exibirProdutosNoCarrinho();
+    }
+
+    <!-- java -->
+document.getElementById('finalizar-pedido-button').addEventListener('click', () => {
+  const produtosNoCarrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  let mensagem = 'Finalizar Pedido - Meu pedido:\n';
+
+  if (produtosNoCarrinho.length > 0) {
+    produtosNoCarrinho.forEach((produto, index) => {
+      mensagem += `${index + 1}. ${produto.nome} - R$ ${produto.preco.toFixed(2)}\n`;
+    });
+
+    const endereco = prompt('Por favor, insira o endereço de entrega:');
+    if (endereco === null) {
+      return; // Cancela o pedido se o usuário clicar em "Cancelar"
+    }
+
+    const numero = prompt('Por favor, insira o número:');
+    if (numero === null) {
+      return; // Cancela o pedido se o usuário clicar em "Cancelar"
+    }
+
+    const complemento = prompt('Por favor, insira o complemento (opcional):');
+    if (complemento === null) {
+      return; // Cancela o pedido se o usuário clicar em "Cancelar"
+    }
+
+    const formaPagamento = prompt('Por favor, insira a forma de pagamento (debito, credito, pix, dinheiro):');
+    if (formaPagamento === null) {
+      return; // Cancela o pedido se o usuário clicar em "Cancelar"
+    }
+
+    if (formaPagamento === 'dinheiro') {
+      const troco = prompt('Por favor, insira o valor para o troco:');
+      if (troco === null) {
+        return; // Cancela o pedido se o usuário clicar em "Cancelar"
+      }
+      mensagem += '\nInformações do Pedido:\n';
+      mensagem += `Endereço: ${endereco}\nNúmero: ${numero}\nComplemento: ${complemento}\n`;
+      mensagem += `Forma de Pagamento: ${formaPagamento}\n`;
+      mensagem += `Troco: ${troco}\n`;
+    } else {
+      mensagem += '\nInformações do Pedido:\n';
+      mensagem += `Endereço: ${endereco}\nNúmero: ${numero}\nComplemento: ${complemento}\n`;
+      mensagem += `Forma de Pagamento: ${formaPagamento}\n`;
+    }
+
+    const numeroWhatsApp = '+5519999015294';
+    window.location.href = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+
+    localStorage.removeItem('carrinho');
+    exibirProdutosNoCarrinho();
+  } else {
+    alert('Seu carrinho está vazio. Adicione produtos antes de finalizar o pedido.');
+  }
+});
+
+
+<!-- para abrir a descrição-->
+function openModal(imageUrl, description) {
+      var modal = document.getElementById('modal');
+      var modalContent = document.getElementById('modal-content');
+      
+      modalContent.innerHTML = `
+        <img src="${imageUrl}" alt="Camiseta" class="modal-image">
+        <p>${description}</p>
+        <a href="index.html" class="back-button" onclick="closeModal()">Voltar</a>
+      `;
+
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      var modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
+
+<!-- 440444004 -->
+
+
+</script>
+<script src="bar.js"></script>
+</body>
+</html>
